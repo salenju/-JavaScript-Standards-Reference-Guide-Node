@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.2 Array对象</title>
+</head>
+<body>
+
+<script>
+    window.onload = function () {
+        /*============= Array构造函数: new Array() =============*/
+        // bad
+        var arr_1 = new Array(2);
+
+        // good
+        var arr_2 = [1, 2];
+        /*
+        * 由于Array构造函数当参数不同时，行为很不一致，因此不建议使用它生产新数组
+        * 更好的做法是使用数组字面量形式生成数组
+        * */
+
+        /*============= 静态方法:Array.isArray() =============*/
+        var arr_3 = [1, 2, 3];
+        console.log(typeof arr_3);    // object
+        console.log(Array.isArray(arr_3));  // true
+
+        /*
+        *   因为 typeof运算符只能显示数组的类型是Object，而Array.isArray()
+        *   方法可以识别数组，可以更为精确的判断某个未知类型是否为数组
+        * */
+        /*============= Array.push() 末尾添加=============*/
+        /*
+        * 1.在数组末端添加一个或多个元素
+        * 2.返回添加新元素后的数组长度
+        * */
+        var arr_4 = [];
+        console.log(arr_4.push(1));     // 1
+        console.log(arr_4.push("a"));   // 2
+        console.log(arr_4.push("b"));   // 3
+        console.log(arr_4);     // [1,"a","b"]
+
+        /*============= Array.pop() 末尾删除=============*/
+        /*
+        * 1.删除数组的最后一个元素
+        * 2.返回被删除的元素
+        * */
+        var arr_5 = ["a", "b", "c"];
+        console.log(arr_5.pop());   // "c"
+        console.log(arr_5);     // ["a","b"]
+
+        /*============= Array.shift() 首部删除=============*/
+        /*
+        * 1.删除数组中的第一个元素
+        * 2.返回被删除的元素
+        * */
+        var arr_6 = ["a", "b", "c"];
+        console.log(arr_6.shift());     // "a"
+        console.log(arr_6);     // ["b","c"]
+        /*============= Array.unshift() 首部添加=============*/
+        /*
+        * 1.在数组第一个位置添加一个或多个元素
+        *  2.返回数组长度
+        * */
+        var arr_7 = ["a", "b", "c"];
+        console.log("arr_7:", arr_7.unshift("x"));
+        console.log("arr_7:", arr_7);
+
+        /*============= Array.join() 依照指定分隔符返回字符串 =============*/
+        /*
+        * 1.以指定参数作为分隔符
+        * 2.将所有数组成员连接为一个字符串并返回
+        * 3.若不提供参数，默认用逗号作为分割符
+        * 4.原数组不变
+        * */
+        var arr_8 = [1, 2, 3, 4];
+        console.log("arr_8:", arr_8.join());     // "1,2,3,4"
+        console.log("arr_8:", arr_8.join(" "));  // "1 2 3 4"
+        console.log("arr_8:", arr_8.join(" | "));    // "1 | 2 | 3 | 4"
+        console.log("arr_8:", arr_8);    // [1,2,3,4]
+
+        /*============= Array.concat() 合并数组 =============*/
+        /*
+        * 1.将新数组成员，添加到原数组成员的后部
+        * 2.返回一个新的数组
+        * 3.原数组不变
+        * */
+        var arr_9 = [1, 2, 3];
+        console.log("arr_9:", arr_9.concat(4, 5, 6));    // [1, 2, 3, 4, 5, 6]
+        console.log("arr_9:", arr_9);    // [1, 2, 3]
+
+        /*============= Array.reverse() 数组倒序 =============*/
+        /*
+        * 1.将数组倒序排列
+        * 2.返回倒序后的数组
+        * 3.原数组改变
+        * */
+        var arr_10 = ["a", "b", "c", "d"];
+        console.log("arr_10:", arr_10.reverse());    // ["d","c", "b", "a"]
+        console.log("arr_10:", arr_10);  // ["d","c", "b", "a"]
+
+        /*============= Array.slice() 截取数组 =============*/
+        /* arr.slice(start,end)
+        * 1.截取数组的一部分
+        * 2.返回一个新数组
+        * 3.原数组不变
+        * 4.start-起始位置（从0开始）；end-终止位置（该位置的元素不包含在内）
+        * 如果end省略则从start开始截取到最后一个元素
+        * */
+        var arr_11 = ["a", "b", "c"];
+        console.log("arr_11:", arr_11.slice(0));     // ["a","b","c"]
+        console.log("arr_11:", arr_11.slice(0, 1));     // ["a"]
+        console.log("arr_11:", arr_11.slice(1, 2));     // ["b"]
+        console.log("arr_11:", arr_11.slice());     // ["a","b","c"]
+
+        /*============= Array.splice() 删除/添加数组成员 =============*/
+        /* arr.splice(start,count,addElement1,addElement2,...)
+        * 1.删除原数组的一部分成员，并可在删除位置添加新的数组成员
+        * 2.返回被删除的元素
+        * 3.原数组改变
+        * 4.start-删除的起始位置（从0开始），count-被删除的元素个数，addElement-需要添加的元素
+        * */
+        var arr_12 = ['a', 'b', 'c', 'd', 'e', 'f'];
+        console.log("arr_12:", arr_12.splice(4, 2, 1, 2));  // ["e","f"]
+        console.log("arr_12:", arr_12);  // ['a', 'b', 'c', 'd', 1, 2]
+
+        /*============= Array.sort() 数组排序 =============*/
+        /*
+        * 1.默认按照字典顺序进行排序
+        * 2.返回排序后的数组
+        * 3.原数组改变
+        * 4.若想自定义排序，需传入函数作为参数
+        * */
+        var arr_13 = ["d", "c", "b", "a"];
+        var arr_14 = [4, 3, 2, 1];
+        var arr_15 = [10111, 1101, 111];
+        arr_13.sort();
+        arr_14.sort();
+        arr_15.sort();
+        console.log("arr_13", arr_13);      // [ 'a', 'b', 'c', 'd']
+        console.log("arr_14", arr_14);      // [1, 2, 3, 4]
+        console.log("arr_15", arr_15);      // [10111, 1101, 111] 按照字典排序，即将现将数值转换为字符串，再按照字典排序进行比较
+
+        function compare(a, b) {
+            return a - b;
+            /*
+            * 返回值 > 0，a排在b后面
+            * 其他返回值，a排在b前面
+            * */
+        }
+
+        arr_15.sort(compare);
+        console.log("arr_15", arr_15);      // [111, 1101, 10111]
+
+        /*============= Array.map() 遍历+操作数组 =============*/
+        /* arr.map((item,index,array) => {// 执行某些操作});
+        * 1.将所有数组成员依次传入参数函数
+        * 2.将每次执行的结果组成一个新的数组返回
+        * 3.原数组不变
+        * */
+
+        var arr_16 = [1, 2, 3];
+        var arr_17 = arr_16.map(function (n) {
+            return n + 1;
+        });
+        console.log("arr_17:", arr_17);      // [2, 3, 4]
+        console.log("arr_16:", arr_16);      // [1, 2, 3]
+
+        /*============= Array.forEach() 遍历+操作数组 =============*/
+        /* arr.forEach((item,index,array) => {// 执行某些操作})
+        * 1.将所有数组成员依次传入参数函数
+        * 2.只用来操作数据，无数据返回
+        * 3.原始数组不变
+        * */
+
+        /*============= Array.filter() 过滤数组成员 =============*/
+        /* arr.filter((item,index,array) => {// 执行某些操作});
+        * 1.将所有数组成员依次传入参数函数
+        * 2.将结果为true的成员组成一个新的数组返回
+        * 3.原数组不变
+        * */
+        var arr_18 = [1, 2, 3, 4, 5];
+        var arr_19 = arr_18.filter(function (item) {
+            return (item > 3);
+        });
+        console.log("arr_19:", arr_19);      // [4,5]
+        console.log("arr_18:", arr_18);      // [1,2,3,4,5]
+
+        /*============= Array.indexOf() 返回元素第一次出现的位置 =============*/
+        /* arr.indexOf(ele,start)
+        * 1.返回元素ele在数组arr中第一次出现的位置(index值),如果没有则返回-1
+        * 2.start- 搜索开始的位置
+        * */
+        var arr_20 = ["a","b","c"];
+        console.log("arr_20",arr_20.indexOf("a"))
+        console.log("arr_20",arr_20.indexOf("f"))
+        console.log("arr_20",arr_20.indexOf("a",1))
+
+        /*============= Array.lastIndexOf() 返回元素 最后一次出现的位置 =============*/
+        /* arr.lastIndexOf(ele,start)
+        * 1.返回元素ele在数组arr中最后一次出现的位置(index值),如果没有则返回-1
+        * 2.start- 搜索开始的位置
+        * */
+        var arr_21 = ["a","b","c","a"];
+        console.log("arr_21",arr_21.lastIndexOf("a"))
+        console.log("arr_21",arr_21.lastIndexOf("f"))
+        console.log("arr_21",arr_21.lastIndexOf("a",1))
+    }
+</script>
+</body>
+</html>

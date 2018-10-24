@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.4 Boolean对象</title>
+</head>
+<body>
+<script>
+    /* Boolean 作为构造函数 */
+    var b = new Boolean(true);
+    console.log("b",typeof b);  // "object"
+    console.log("&&",b.valueOf());  // true
+    /* 注意：false 对应的包装对象实例，布尔运算结果是true */
+    if(new Boolean(false)) {
+        console.log("$$","true")    // true
+    }
+
+    if(new Boolean(false).valueOf()) {
+        console.log("**","true")    // 无输出
+    }
+    /* Boolean  作为类型转换作用 */
+    /*
+    * Boolean作为类型装换，将任意值转为布尔值
+    * */
+    console.log(Boolean(undefined));    // false
+    console.log(Boolean(null));     // false
+    console.log(Boolean(0));        // false
+    console.log(Boolean(""));       // false
+    console.log(Boolean(NaN));      // false
+    console.log(Boolean(false));    // false
+
+    console.log(Boolean("false"));    // true
+    console.log(Boolean(1));    // true
+    console.log(Boolean([]));    // true
+    console.log(Boolean([]));    // true
+    console.log(Boolean(function() {}));    // true
+    console.log(Boolean(/foo/));    // true
+</script>
+</body>
+</html>

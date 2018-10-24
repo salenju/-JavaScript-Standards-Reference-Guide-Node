@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.6 数组</title>
+</head>
+<body>
+
+<script>
+    /*================in 运算符==================*/
+    // 检测某个键名是否存在于对象或数组中
+    var arr = ["a", "b", "c"];
+    console.log(2 in arr);     // true
+    console.log("2" in arr);   // true
+    console.log(4 in arr);     // false
+
+    // 如果数组某个位置为空位，in运算会返回false
+    var arr_1 = [];
+    arr_1[99] = "a";
+    console.log(99 in arr_1);  // true
+    console.log(1 in arr_1);   // false
+
+    /*================for...in循环和数组的遍历==================*/
+    var arr_2 = [1, 2, 3];
+    arr_2.foo = true;
+    for (var i in arr_2) {
+        console.log(arr_2[i]);
+    }
+    for (var key in arr_2) {
+        console.log(key);   // 0 1 2 foo
+    }
+</script>
+</body>
+</html>

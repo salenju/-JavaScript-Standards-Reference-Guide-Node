@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.7 Math 对象</title>
+</head>
+
+<body>
+    <script>
+       /*======================== 静态方法 ========================*/
+       /*============ Math.abs() 绝对值============*/
+        var v1 = 1;
+        var v2 = -2;
+        console.log("V1",Math.abs(v1))  // 1
+        console.log("V2",Math.abs(v2))  // 2
+
+       /*============ Math.max(),Math.min() 最大值，最小值============*/
+       /*
+       * Math.max(ele1,ele2...) 返回参数中最大的那个值，如果参数为空，返回-Infinity
+       * Math.min(ele1,ele2...)返回参数中最小的那个值,如果参数为空，返回Infinity
+       * */
+       console.log("Math.max",Math.max(2,-2,4))  // 4
+       console.log("Math.max",Math.max())  // -Infinity
+       console.log("Math.min",Math.min(2,-2,4))  // -2
+       console.log("Math.min",Math.min())  // Infinity
+    </script>
+</body>
+</html>

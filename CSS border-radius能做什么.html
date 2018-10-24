@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS border-radius能做什么</title>
+    <style>
+        .test1 {
+            width:200px;
+            height:200px;
+            background:#f40;
+            border-radius:4em 8em;
+            margin:20px;
+        }
+        .test2{
+            width:200px;
+            height:200px;
+            background:deepskyblue;
+            border-radius:4em / 8em;
+            margin:20px;
+        }
+        .test3{
+            width:200px;
+            height:200px;
+            background:greenyellow;
+            border-radius:70% 30% 30% 70% / 60% 40% 60% 40%;
+            margin:20px;
+        }
+    </style>
+</head>
+<body>
+<div class="test1">
+    border-radius:4em 8em;
+</div>
+<div class="test2">
+    border-radius:4em / 8em;
+</div>
+<div class="test3">
+    border-radius:70% 30% 30% 70% / 60% 40% 60% 40%;
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.3 包装对象</title>
+</head>
+<body>
+<script>
+/*============== 包装对象 ==============*/
+    /*三种原始类型的值——数值、字符串、布尔值在一定条件下也会转为对象，即原始类型的“包装对象”
+    * 包装对象：是分别于数值、字符串、布尔值相对应的Number、String、Boolean三个原生对象
+    * 这三个原生对象可以把原始类型的值包装成对象
+    * */
+
+    var v1 = new Number(123);
+    var v2 = new String('abc');
+    var v3 = new Boolean(true);
+
+    console.log('v1',typeof v1);    // "object"
+    console.log('v2',typeof v2);    // "object"
+    console.log('v3',typeof v3);    // "object"
+
+    /*
+    * Number(),String(),Boolean()如果不作为构造函数调用（即调用时不加new），常常用于将
+    * 任意类型的值转换为数值，字符串，布尔值
+    * */
+
+</script>
+</body>
+</html>

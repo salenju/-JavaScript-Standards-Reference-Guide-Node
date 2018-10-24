@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>3.1 Object对象</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+         * Object对象方法包括：
+         * - Object对象本身的方法（静态方法）
+         * - Object的实例方法
+         * */
+
+        /*=================== Object对象本身的方法（静态方法） ===================*/
+        /*
+         * “本身的方法/静态方法”——直接定义在Object对象上的方法
+         * */
+        /*=================== Object.keys() ===================*/
+        /* Object.keys(obj)
+        * 1.用于遍历对象属性
+        * 2.参数是一个对象
+        * 3.返回一个数组（该数组成员都是该对象自身的而非继承的所有属性名）
+        * */
+        var obj_1 = {
+            p1:123,
+            p2:456
+        };
+        console.log(Object.keys(obj_1));  // ["p1", "p2"]
+
+        /*=================== Object.getOwnPropertyNames() ===================*/
+        /* Object.getOwnPropertyNames(obj)
+        * 1.用于遍历对象属性
+        * 2.参数是一个对象
+        * 3.返回一个数组（该数组成员都是该对象自身的而非继承的所有属性名）
+        * */
+        var obj_2 = {
+            p1:123,
+            p2:456
+        };
+        console.log(Object.keys(obj_2));  // ["p1", "p2"]
+
+        /*
+        * 一般来说Object.keys()和Object.getOwnPropertyNames()返回的结果是一样的。
+        * 只有设计不可枚举时才有不一样的结果。
+        * 几乎总是使用Object.keys()方法遍历对象的属性
+        * */
+
+        /*========================= Object实例的方法 =========================*/
+        /*
+         * “实例方法”——定义在Object原型对象Object.prototype上的方法，
+         *  可直接被Object实例调用
+         * */
+        6
+        Object.prototype.print = function() {
+            console.log("Object实例方法");
+        }
+        var obj = new Object();
+        console.log("Object实例方法", obj.print());
+
+        /*=================== Object() ===================*/
+        /*
+         * Object本身就是一个函数，可以当做工具使用，将任意值转换为对象，这个方法常用于保证某个值一定是对象
+         * 如果参数为空/undefined/null Object()返回一个空对象
+         * */
+        var obj_1 = Object();
+        var obj_2 = Object(undefined);
+        var obj_3 = Object(null);
+        console.log("obj_1", obj_1 instanceof Object); // true
+        console.log("obj_2", obj_2 instanceof Object); // true
+        console.log("obj_3", obj_3 instanceof Object); // true
+
+        /*=================== Object构造函数 ===================*/
+        /*var obj = new Object();
+        * 通过var obj = new Object()的写法生成的对象，与字面量写法var obj = {}是等价的。
+        * */
+    </script>
+</body>
+
+</html>
