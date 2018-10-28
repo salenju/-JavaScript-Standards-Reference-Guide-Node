@@ -26,6 +26,72 @@
        console.log("Math.max",Math.max())  // -Infinity
        console.log("Math.min",Math.min(2,-2,4))  // -2
        console.log("Math.min",Math.min())  // Infinity
+
+       /*============ Math.floor(),Math.ceil() 向下取整、向上取整============*/
+        console.log("Math.floor",Math.floor(3.5));  // 3
+        console.log("Math.floor",Math.floor(- 3.5));  // 4
+        console.log("Math.ceil",Math.ceil(3.5));  // 4
+        console.log("Math.ceil",Math.ceil(- 3.5));  // -3
+
+       // 返回整数部分的函数
+       function ToInteger(x) {
+           x = Number(x);
+           return x < 0 ? Math.ceil(x) : Math.floor(x);
+       }
+       console.log(ToInteger(3.1));     // 3
+       console.log(ToInteger(3.8));     // 3
+       console.log(ToInteger(-3.2));    // -3
+       console.log(ToInteger(-3.9));    // -3
+
+       /*============ Math.round() 四舍五入 ============*/
+       console.log("Math.round",Math.round(0.2));   // 0
+       console.log("Math.round",Math.round(0.5));   // 1
+       console.log("Math.round",Math.round(-0.4));   // 0
+       console.log("Math.round",Math.round(-1.6));   // -2
+
+       /*============ Math.pow() 指数运算 ============*/
+       /* Math.pow(value1,value2)
+       * value1:底数
+       * value2:幂的指数值
+       * */
+       console.log("Math.pow",Math.pow(2,2));   // 4 等价于2的2次方
+       console.log("Math.pow",Math.pow(2,3));   // 8 等价于2的3次方
+
+       // 求圆的面积函数
+       function area(radius) {
+           return Math.PI * Math.pow(radius,2);
+       }
+        console.log("area",area(2));
+
+       /*============ Math.random() 随机数 ============*/
+       /*
+       * 返回0—1之间的一个随机数，可能是0，但一定小于1
+       * */
+       console.log("Math.random",Math.random());    // 0.2604309486104204
+       console.log("Math.random",Math.random());    // 0.7589254545855786
+
+       // 任意范围的随机数生成函数
+       function getRandomArbitrary(min,max) {
+           return Math.random() * (max - min) + min;
+       }
+
+       // 任意范围的随机整数生成函数
+       function getRandomInt(min,max) {
+           return Math.floor(Math.random()*(max - min) + min);
+       }
+
+       console.log("getRandomArbitrary",getRandomArbitrary(1.5,5.5));   // 4.451835845767753
+       console.log("getRandomInt",getRandomInt(1,6));   // 2
+       /*============ 三角函数方法============*/
+       /*
+       * Math.sin() : 返回参数的正弦（参数为弧度值）
+       * Math.cos() : 返回参数的余弦（参数为弧度值）
+       * Math.tan() : 返回参数的正切（参数为弧度值）
+       * Math.asin() : 返回参数的反正弦（返回值为弧度值）
+       * Math.acos() : 返回参数的反余弦（返回值为弧度值）
+       * Math.atan() : 返回参数的反正切（返回值为弧度值）
+       * */
+
     </script>
 </body>
 </html>

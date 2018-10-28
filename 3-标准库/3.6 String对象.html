@@ -1,10 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>3.6 String对象</title>
 </head>
-<body>
 
+<body>
+    <script>
+        /*=============== String 作为构造函数使用 ===============*/
+        var s1 = 'abc';
+        var s2 = new String('abc');
+        console.log(typeof (s1));   // string
+        console.log(typeof (s2));   // object  字符串对象
+        console.log(s2.valueOf());   // 'abc'
+
+      /* 字符串对象是一个类似数组的对象（很像数组，但却不是数组）*/
+        var s3 = new String('bcd')    // String{0:"b",1:"c",2:"d",length:3}
+        console.log("s3",s3[1])     // "c"
+
+        /*=============== 实例属性 ：String.prototype.length ===============*/
+        /*
+        * 返回字符串实例的长度
+        * */
+        console.log("length",s1.length);    // 3
+
+        /*=============== String.prototype.charAt()  返回指定位置字符 ===============*/
+        /*
+        * 1.返回指定位置的字符
+        * 2.如果参数为负数或>=字符串的长度，则返回""
+        * 3.原字符串不变
+        * */
+        var s4 = "cde";
+        console.log("charAt():",s4.charAt(1));  // "d"
+        console.log("charAt():",s4.charAt(s4.length -1));   // "e"
+        console.log("charAt()-$:",s4.charAt(s4.length));   // ""
+        console.log("charAt()-@:",s4.charAt(-1));   // ""
+        console.log("charAt()-s4:",s4);   // "cde"
+
+        /*=============== String.prototype.charCodeAt()  返回指定位置字符的Unicode码点 ===============*/
+        /*
+        * 1.返回指定位置的Unicode码点（十进制表示）
+        * 2.如果参数为负数或>=字符串长度，则返回NaN
+        * 3.原字符串不变
+        * 注意：
+        * */
+        var s5 = "defg";
+        console.log("s5-charCodeAt():",s5.charCodeAt(1));   // 101
+        console.log("s5-charCodeAt():",s5.charCodeAt(s5.length - 1));   // 103
+        console.log("s5-charCodeAt():",s5.charCodeAt(s5.length));   // NaN
+        console.log("s5-charCodeAt():",s5.charCodeAt(-1));   // NaN
+        console.log("s5-charCodeAt():",s5);   // "defg"
+
+        /*=============== String.prototype.concat()  合并字符串 ===============*/
+        /*
+        * 1.连接两个字符串，返回一个新的字符串
+        * 2.可以接受多个参数
+        * 3.原字符串不变
+        * */
+        var s6 = "ghi";
+        var s7 = "jkl";
+        var s8 = 5;
+        console.log("s6 concat s7:",s6.concat(s7));     // "ghijkl"
+        console.log("s8:",s6.concat(s7,s8));    // "ghijkl5"
+        console.log("s6:",s6);   // "ghi"
+        console.log("s7:",s7);   // "jkl"
+
+        /*=============== String.prototype.slice() 截取字符串 ===============*/
+        /* string.slice(start,end)
+        * 1.截取字符串的一部分
+        * 2.返回截取的字符串
+        * 3.原字符串不变
+        * 4.start-起始位置（从0开始）；end-终止位置（该位置的元素不包含在内）
+        * 如果end省略则从start开始截取到最后一个元素
+        * 如果start > end 则返回""
+        * */
+        var  s9 = "JavaScript";
+        console.log("s9:",s9.slice(0,4));   // "Java"
+        console.log("s9:",s9.slice(4));   // "Script"
+        console.log("s9:",s9.slice(5,4));   // ""
+        console.log("s9:",s9);   // "JavaScript"
+
+        /*=============== String.prototype.subString()   ===============*/
+
+        /*=============== String.prototype.subStr()   ===============*/
+
+        /*=============== String.prototype.indexOf() 返回元素第一次出现的位置 ===============*/
+        /* arr.indexOf(ele,start)
+        * 1.返回元素ele在字符串string中第一次出现的位置(index值),如果没有则返回-1
+        * 2.start- 从start位置开始向后匹配  |——>
+        * 3.从头部开始匹配
+        * 4.原字符串不变
+        * */
+        var s10 = "Hello Salen";
+        console.log("s10:",s10.indexOf("S"));   // 6
+        console.log("s10:",s10.indexOf("M"));   // -1
+        console.log("s10:",s10.indexOf("e",6));   // 9
+        console.log("s10:",s10);   // 9
+
+        /*=============== String.prototype.lastIndexOf() 返回元素最后一次出现的位置  ===============*/
+        /* arr.lastIndexOf(ele,start)
+        * 1.返回元素ele在字符串string中最后一次出现的位置(index值),如果没有则返回-1
+        * 2.start- 从start位置向前匹配  <——|
+        * 3.从尾部开始匹配
+        * 4.原字符串不变
+        * */
+        var s11 = "Hello Salen";
+        console.log("lastIndexOf():",s11.lastIndexOf("e"));     // 9
+        console.log("lastIndexOf():",s11.lastIndexOf("e",3));     // 1
+        console.log("lastIndexOf():",s11);     // 1
+
+        /*=============== String.prototype.trim() 去除两端的空格 ===============*/
+        /*
+        * 1.去除字符串两端的空格、制表符（\t,\v）、换行符(\n)和回车符(\r)，返回一个新的字符串
+        * 2.原字符串不变
+        * */
+        var s12 = "  \r\nHello Salen\t ";
+        console.log("s12:",s12.trim());     // "Hello Salen"
+        console.log("s12:",s12);     // "Hello Salen"
+
+        /*=============== String.prototype.toLowerCase() 转换为小写字母 ===============*/
+        /*
+        * 1.将一个字符串全部转换为小写，返回新的字符串
+        * 2.原字符串不变
+        * */
+        var s13 = "Hello Salen";
+        console.log("s13:",s13.toLowerCase());      // "hello salen"
+        console.log("s13:",s13);      // "Hello Salen"
+
+        /*=============== String.prototype.toUpperCase() 转换为大写字母   ===============*/
+        /*
+        * 1.将一个字符串全部转换为大写，返回新的字符串
+        * 2.原字符串不变
+        * */
+        var s14 = "Hello Salen";
+        console.log("s14:",s14.toUpperCase());  // "HELLO SALEN"
+        console.log("s14:",s14);  // "Hello Salen"
+
+        /*=============== String.prototype.match() 字符匹配 ===============*/
+        /* string.match(ele)
+        * 1.string字符串是否匹配某个字符串ele，返回一个数组
+        * 2.如果有匹配的则只返回第一个匹配的字符串，否则返回null
+        * 3.原字符串不变
+        * */
+        var s15 = "cat,bat,fat";
+        console.log("s15:",s15.match("at"));    // ["at"]
+        console.log("s15:",s15.match("at"));    // ["at"]
+        console.log("s15:",s15.match("at"));    // ["at"]
+        console.log("s15:",s15.match("xt"));    // null
+        console.log("s15:",s15);    // "cat,bat,fat"
+
+        /*=============== String.prototype.search() ===============*/
+        /* string.search(ele)
+        * 1.用法基本等同于match()。
+        * 2.如果有匹配的则返回匹配的第一个位置（index），否则返回 -1
+        * 3.原字符串不变
+        * */
+        var s16 = "cat,bct,fdt";
+        console.log("s16:",s16.search("ct"));   // 5
+        console.log("s16:",s16.search("xt"));   // -1
+        console.log("s16:",s16);   //  "cat,bct,fdt"
+
+        /*=============== String.prototype.replace 替换字符串 ===============*/
+        /* string.replace(ele1,ele2)
+        * 1.如果string中有和ele1匹配的，则用ele2替换第一个匹配的字符串,否则返回原字符串
+        * 2.原字符串不变
+        * */
+        var s17 = "cat,bat,fat";
+        console.log("s17:",s17.replace("at","cc"));     // "ccc,bat,fat"
+        console.log("s17:",s17.replace("tt","cc"));     // "cat,bat,fat"
+        console.log("s17:",s17);     // "cat,bat,fat"
+
+        /*=============== String.prototype.split() 分割字符串 ===============*/
+        /* string.split(rule,length)
+        * 1.按照指定规则rule分割字符串，返回一个由分割出来的字符串组成的数组，数组的最大长度为length
+        * 2.原字符串不变
+        * */
+        var s18 = "salen";
+        var s19 = "s|a|l|e|n";
+        console.log("s18:",s18.split(""));  // ["s","a","l","e","n"]
+        console.log("s19:",s19.split("|"));  // ["s","a","l","e","n"]
+        console.log("s19:",s19.split("|",3));  // ["s","a","l"]
+        console.log("s19:",s19);  // "s|a|l|e|n"
+
+
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-实例对象与new命令</title>
+</head>
+<body>
+<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001458267339633fd3a83c597d04b5fb59f7d1f6792efb3000">原文地址</a>
+<script>
+    // 对象(object)到底是什么？
+    /*
+    * 1）对象是单个实物的抽象。一本书、一辆汽车等都可以是一个对象
+    * 2）对象是一个容器，封装了属性(property)和方法（method）
+    *       属性：对象的特征
+    *       方法：对象的行为（可以完成某种任务）
+    * */
+
+    // 构造函数
+    /*
+    * 模板（表示某一类实物的共同特征）——>对象
+    * 类（对象的模板） ——> 对象（类的实例）
+    *
+    * */
+    // 原始写法
+    // function Cat(name) {
+    //     this.name = name;
+    // }
+    // Cat.prototype.say = function() {
+    //     return "Hello," + this.name + "!"
+    // }
+
+    // class写法
+    class Animal {
+        constructor(name) {
+            this.name = name;
+        }
+    }
+
+    class Cat extends Animal{
+        constructor(name) {
+            super(name);
+        }
+        say() {
+            return "Hello," + this.name + "!"
+        }
+    }
+    var kitty = new Cat("Kitty");
+    var doraemon = new Cat("多啦A梦")
+    console.log(kitty.name);    // Kitty
+    console.log(kitty.say());   // Hello,Kitty!
+    console.log(doraemon.name);     // 多啦A梦
+    console.log(doraemon.say());    // Hello,多啦A梦!
+
+    class Student{
+        constructor(name) {
+            this.name = name;
+        }
+        hello() {
+            alert("Hello," + this.name + "!");
+        }
+    }
+    var xiaoming = new Student("小明");
+    xiaoming.hello();
+
+    // 继承
+    class PrimaryStudent extends Student{
+        constructor(name,grade) {
+            super(name);    // 用super调用父类的构造方法
+            this.grade = grade;
+        }
+        myGrade() {
+            alert("I am at grade" + this.grade);
+        }
+    }
+    
+</script>
+</body>
+</html>
